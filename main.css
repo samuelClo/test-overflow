@@ -18,13 +18,13 @@ section {
   width: var(--common-width);
   background-color: brown;
   color: white;
-  margin: 0 auto 20px auto
+  margin: 0 auto 20px auto;
+
 }
 
 main {
   display: flex;
   overflow-x: scroll;
-  flex-grow: 1;
   scroll-snap-type: x mandatory;
 }
 
@@ -35,8 +35,18 @@ main {
   flex-direction: column;
   align-items: center;
   scroll-snap-align: center;
+  height: 100vh;
+  margin-top: 150px;
+  z-index: 1;
+  background-color: #fff;
 }
 
 .documents {
   width: var(--common-width);
+}
+
+button {
+  position: sticky;
+  top: 0px;
+  cursor: pointer;
 }
