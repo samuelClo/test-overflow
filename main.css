@@ -1,0 +1,42 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --common-width: 50vw;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  width: var(--common-width);
+  background-color: brown;
+  color: white;
+  margin: 0 auto 20px auto
+}
+
+main {
+  display: flex;
+  overflow-x: scroll;
+  flex-grow: 1;
+  scroll-snap-type: x mandatory;
+}
+
+.l-documents {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-snap-align: center;
+}
+
+.documents {
+  width: var(--common-width);
+}
