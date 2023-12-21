@@ -1,42 +1,68 @@
+:root {
+  --common-width: 300px;
+  --scrollbar-width: var(--scrollbar-width-js, 12px)
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
+  font-family: system-ui, sans-serif;
 }
 
-:root {
-  --common-width: 50vw;
+html {
+  /* overflow-y: auto;
+  scroll-snap-type: y mandatory; */
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-section {
+.card {
   width: var(--common-width);
-  background-color: brown;
-  color: white;
-  margin: 0 auto 20px auto
+  border-radius: 10px;
+  padding: 15px 25px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(27, 31, 35, 0.15);
+}
+
+header {
+  top: 0;
+  margin: 20px auto;
+  /* scroll-snap-align: start; */
 }
 
 main {
+  /* scroll-snap-align: start; */
   display: flex;
-  overflow-x: scroll;
-  flex-grow: 1;
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
+  /* Use to define a height because if all child is exclude from the DOM there is no height min-height: 100vh; */
+  min-height: 100vh;
 }
 
-.l-documents {
+.l-include-gutter {
   flex-shrink: 0;
   width: 100%;
+  scroll-snap-align: center;
+  /* Pretty recent */
+  /* https://caniuse.com/?search=contain */
+  contain: size;
+
+  /* Add scroll bar width */
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+  /* Because child has a more than 100% width */
+  overflow-x: clip;
+}
+
+.l-article {
+  width: calc(100% + var(--scrollbar-width));
   display: flex;
   flex-direction: column;
   align-items: center;
-  scroll-snap-align: center;
 }
 
-.documents {
-  width: var(--common-width);
+/* For safari */
+/* https://caniuse.com/mdn-css_properties_scrollbar-gutter */
+@supports not (scrollbar-gutter: stable) {
+  .l-article {
+    overflow-y: scroll;
+  }
 }
